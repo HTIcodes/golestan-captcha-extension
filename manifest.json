@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Golestan CAPTCHA Helper",
+  "version": "1.0.0",
+  "description": "تشخیص خودکار کپچا برای سیستم گلستان - فقط یک کلیک!",
+  "author": "Your Name",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://golestan.ikiu.ac.ir/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CAPTCHA Auto-Fill",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tfjs_model/*",
+        "mask.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

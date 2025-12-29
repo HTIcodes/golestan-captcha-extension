@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 280px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #ffffff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        
+        .header p {
+            font-size: 11px;
+            color: #95a5a6;
+            font-weight: 400;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        button:not(:disabled):hover {
+            transform: translateY(-1px);
+        }
+        
+        button:not(:disabled):active {
+            transform: translateY(0);
+        }
+        
+        #btnFill {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        #btnFill:not(:disabled):hover {
+            background: #5568d3;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        #btnCopy {
+            background: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+        
+        #btnCopy:not(:disabled):hover {
+            background: #e9ecef;
+            border-color: #ced4da;
+        }
+        
+        .icon {
+            font-size: 14px;
+        }
+        
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            text-align: center;
+            display: none;
+            line-height: 1.4;
+        }
+        
+        .status-loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .result-container {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .result-label {
+            font-size: 10px;
+            color: #6c757d;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        
+        .result-text {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: #2c3e50;
+            letter-spacing: 4px;
+            font-family: 'Courier New', monospace;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .model-status {
+            font-size: 10px;
+            color: #95a5a6;
+            text-align: center;
+            margin-top: 12px;
+            padding: 6px;
+        }
+        
+        .model-loading {
+            color: #f39c12;
+        }
+        
+        .model-ready {
+            color: #27ae60;
+        }
+        
+        .model-error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Golestan CAPTCHA</h2>
+        <p>تشخیص خودکار کپچا</p>
+    </div>
+    
+    <div class="buttons">
+        <button id="btnFill" disabled>
+            <span class="icon">✓</span>
+            <span>تشخیص و پر کردن</span>
+        </button>
+        
+        <button id="btnCopy" disabled>
+            <span class="icon">⎘</span>
+            <span>تشخیص و کپی</span>
+        </button>
+    </div>
+    
+    <div id="status"></div>
+    
+    <div class="result-container" id="resultContainer">
+        <div class="result-label">کد شناسایی شده</div>
+        <div class="result-text" id="resultText">-----</div>
+    </div>
+    
+    <div class="model-status model-loading" id="modelStatus">
+        در حال اتصال به سرور...
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
